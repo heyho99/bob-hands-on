@@ -9,6 +9,19 @@ sys.path.insert(0, os.path.join(os.path.dirname(__file__), ".."))
 from app import app
 
 
+@pytest.fixture(autouse=True)
+def reset_db():
+    """テストごとにデータベースを初期状態にリセットする。"""
+    import db
+
+    db.memos = [
+        {"id": 1, "title": "買い物リスト", "content": "牛乳、卵、パン"},
+        {"id": 2, "title": "会議メモ", "content": "次回の会議は金曜日14時から"},
+        {"id": 3, "title": "アイデア", "content": "新しいプロジェクトの提案書を作成する"},
+    ]
+    db.next_id = 4
+
+
 @pytest.fixture
 def client():
     """テスト用クライアントを作成する。"""

@@ -38,6 +38,13 @@ def create_memo_route():
 # TODO: DELETE /api/memos/<id> を実装する
 
 
+@memos_bp.route("/api/memos/stats", methods=["GET"])
+def memo_stats():
+    """メモの統計情報を取得する。"""
+    stats = get_memo_stats(memos)
+    return jsonify(stats)
+
+
 def get_memo_stats(memo_list):
     """メモの統計情報を取得する。
 
