@@ -1,5 +1,7 @@
 """メモのデータモデル定義"""
 
+import db
+
 
 def create_memo(title: str, content: str) -> dict:
     """新しいメモを作成する。
@@ -11,15 +13,12 @@ def create_memo(title: str, content: str) -> dict:
     Returns:
         作成されたメモの辞書
     """
-    from db import memos, next_id
-    import db
-
     memo = {
-        "id": next_id,
+        "id": db.next_id,
         "title": title,
         "content": content,
     }
-    memos.append(memo)
+    db.memos.append(memo)
     db.next_id += 1
     return memo
 
