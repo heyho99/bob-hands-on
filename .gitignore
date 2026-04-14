@@ -6,6 +6,6 @@ dist/
 build/
 .eggs/
 venv/
-.env
+# .env
 *.db
 .pytest_cache/
