@@ -9,3 +9,4 @@ venv/
 # .env
 *.db
 .pytest_cache/
+venv/
